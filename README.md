@@ -26,9 +26,9 @@ discrete card.
 This utilizes Nouveau's `DRI_PRIME=1` feature. For example:
 
 ```shell
-# ./tpgsw_ctrl on
+$ sudo ./tpgsw_ctrl on
 $ DRI_PRIME=1 glxgears -info
-# ./tpgsw_ctrl off
+$ sudo ./tpgsw_ctrl off
 ```
 
 Note the `tpgsw_ctrl` utility needs superuser privileges to run.
