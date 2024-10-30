@@ -9,9 +9,16 @@ sysfs and add a few extra utilities.
 > This uses undocumented tricks, use at your own risk.
 > **You may brick your system with this if you have no idea what you're doing!**
 
+## Why this and not ACPI-based Optimus control?
+
+Bit-banging the power management IC with x86 in/out ports is the only way I 
+know of to toggle power to a Corebooted ThinkPad's GPU, as of 2024. This will 
+probably change at a later time, once the ACPI Optimus control feature in 
+Coreboot is complete.
+
 ## Compatibility
 
-- ThinkPad W541
+- ThinkPad W541 (with Quadro K1100M)
 
 ## Installation
 

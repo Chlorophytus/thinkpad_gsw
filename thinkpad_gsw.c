@@ -300,7 +300,7 @@ static int __init thinkpad_gsw_init(void) {
 }
 
 static void __exit thinkpad_gsw_exit(void) {
-	pr_info("Unloading\n");
+  pr_info("Unloading\n");
 
   // remove kobject
   kobject_put(gsw_kobj);
