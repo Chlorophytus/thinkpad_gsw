@@ -28,14 +28,16 @@ Copy `10-dont-add-nouveau.conf` to your Xorg config folder so that Xorg won't
 bind to your discrete graphics, making `tpgsw_ctrl` unable to switch off the
 discrete card.
 
+To access `tpgsw_ctrl` easier, copy it to `/usr/local/sbin/`.
+
 ## Usage
 
 This utilizes Nouveau's `DRI_PRIME=1` feature. For example:
 
 ```shell
-$ sudo ./tpgsw_ctrl on
+$ sudo tpgsw_ctrl on
 $ DRI_PRIME=1 glxgears -info
-$ sudo ./tpgsw_ctrl off
+$ sudo tpgsw_ctrl off
 ```
 
 Note the `tpgsw_ctrl` utility needs superuser privileges to run.
