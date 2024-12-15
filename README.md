@@ -18,7 +18,7 @@ Coreboot is complete.
 
 ## Compatibility
 
-- ThinkPad W541 (with Quadro K1100M)
+- ThinkPad W541 (with Quadro K1100M or Quadro K2100M)
 
 ## Installation
 
