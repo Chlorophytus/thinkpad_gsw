@@ -8,7 +8,7 @@ case $1 in
   on )
     echo "Trying to enable discrete graphics"
     echo 1 > /sys/thinkpad_gsw/gpu_state
-    modprobe nouveau modeset=2
+    modprobe nouveau
     ;;
   off )
     echo "Trying to disable discrete graphics"
