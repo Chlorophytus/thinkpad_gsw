@@ -8,7 +8,7 @@
 #include <linux/acpi.h>
 #include <asm/io.h>
 
-#define THINKPAD_GSW_VERSION "0.10"
+#define THINKPAD_GSW_VERSION "0.10.2"
 
 enum {
     GSW_DONT_CARE = -1,
@@ -140,7 +140,7 @@ static void thinkpad_gsw_try_disable(void) {
   thinkpad_gsw_dgpu_raw_poke(7, 0);
   usleep_range(1000, 2000);
   thinkpad_gsw_dgpu_raw_poke(3, 0);
-  msleep(50);
+  msleep(100);
 
   pr_info("finished disabling discrete graphics\n");
 }
@@ -156,7 +156,7 @@ static void thinkpad_gsw_try_enable(void) {
   thinkpad_gsw_dgpu_raw_poke(3, 1);
   usleep_range(10000, 20000);
   thinkpad_gsw_dgpu_raw_poke(7, 1);
-  msleep(50);
+  msleep(100);
 
   pci_set_power_state(dis_dev, PCI_D0);
   pci_restore_state(dis_dev);
