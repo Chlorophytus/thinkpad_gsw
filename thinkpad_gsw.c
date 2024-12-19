@@ -1,12 +1,8 @@
 #include <asm/io.h>
-#include <linux/acpi.h>
 #include <linux/delay.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/pci.h>
-#include <linux/pm_runtime.h>
-#include <linux/suspend.h>
-#include <linux/sysfs.h>
 #include <linux/vga_switcheroo.h>
 
 #define THINKPAD_GSW_VERSION "0.11"

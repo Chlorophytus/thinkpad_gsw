@@ -1,9 +1,6 @@
 # `thinkpad_gsw`
 
-Toggles the ThinkPad PMH7's discrete graphics card power.
-
-About half of the code is from `bbswitch`. I decided to rewrite the module with
-sysfs and add a few extra utilities.
+Toggles the ThinkPad PMH7's discrete graphics card power using `vga_switcheroo`.
 
 > [!IMPORTANT]
 > This uses undocumented tricks, use at your own risk.
@@ -24,20 +21,12 @@ Coreboot is complete.
 
 Use DKMS to install the driver.
 
-Copy `10-dont-add-nouveau.conf` to your Xorg config folder so that Xorg won't
-bind to your discrete graphics, making `tpgsw_ctrl` unable to switch off the
-discrete card.
-
-To access `tpgsw_ctrl` easier, copy it to `/usr/local/sbin/`.
-
 ## Usage
 
-This utilizes Nouveau's `DRI_PRIME=1` feature. For example:
+This utilizes `vga_switcheroo` and Nouveau's `DRI_PRIME=1` feature. For example:
 
 ```shell
-$ sudo tpgsw_ctrl on
+# echo ON >> /sys/kernel/debug/vgaswitcheroo/switch
 $ DRI_PRIME=1 glxgears -info
-$ sudo tpgsw_ctrl off
+# echo OFF >> /sys/kernel/debug/vgaswitcheroo/switch
 ```
-
-Note the `tpgsw_ctrl` utility needs superuser privileges to run.
