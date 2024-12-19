@@ -116,7 +116,7 @@ thinkpad_gsw_switcheroo_power_state(enum vga_switcheroo_client_id id,
   }
 }
 
-static struct vga_switcheroo_handler thinkpad_gsw_switcheroo{
+static struct vga_switcheroo_handler thinkpad_gsw_switcheroo = {
     .init = NULL,
     .switchto = &thinkpad_gsw_switcheroo_switchto,
     .switch_ddc = NULL,
