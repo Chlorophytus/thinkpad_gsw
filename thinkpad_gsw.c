@@ -67,7 +67,7 @@ static void thinkpad_gsw_dgpu_enable(void) {
   msleep(100);
 }
 
-enum vga_switcheroo_client_id
+static enum vga_switcheroo_client_id
 thinkpad_gsw_switcheroo_get_client_id(struct pci_dev *pdev) {
   switch (pdev->vendor) {
   case PCI_VENDOR_ID_NVIDIA: {
