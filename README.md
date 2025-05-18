@@ -30,6 +30,9 @@ discrete card.
 
 To access `tpgsw_ctrl` easier, copy it to `/usr/local/sbin/`.
 
+Boot parameter `modprobe.blacklist=nouveau` should be added to prevent your
+Nvidia graphics card from being detected at boot.
+
 ## Usage
 
 This utilizes Nouveau's `DRI_PRIME=1` feature. For example:
