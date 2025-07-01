@@ -8,7 +8,7 @@
 #include <linux/acpi.h>
 #include <asm/io.h>
 
-#define THINKPAD_GSW_VERSION "0.10.2"
+#define THINKPAD_GSW_VERSION "0.10.3"
 
 enum {
     GSW_DONT_CARE = -1,
@@ -32,6 +32,7 @@ struct kobject *power_kobj;
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Roland Metivier <metivier.roland@chlorophyt.us>");
+MODULE_AUTHOR("Peter Wu <lekensteyn@gmail.com>");
 MODULE_DESCRIPTION("Toggles the ThinkPad PMH7's discrete graphics card power");
 MODULE_VERSION(THINKPAD_GSW_VERSION);
 MODULE_PARM_DESC(load_state, "GPU power state when loaded (-1 = don't care, 0 = off, 1 = on)");
