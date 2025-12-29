@@ -10,12 +10,13 @@ case $1 in
     echo 1 > /sys/thinkpad_gsw/gpu_state && \
     sleep 2 && \
     modprobe nvidia && \
-    modprobe nvidia-uvm
+    modprobe nvidia-uvm && \
+    modprobe nvidia-drm modeset=1
     ;;
   off )
     echo "(NVIDIA v470) Trying to disable discrete graphics"
-    modprobe -r nvidia-modeset && \
     modprobe -r nvidia-drm && \
+    modprobe -r nvidia-modeset && \
     modprobe -r nvidia-uvm && \
     modprobe -r nvidia && \
     echo 0 > /sys/thinkpad_gsw/gpu_state
