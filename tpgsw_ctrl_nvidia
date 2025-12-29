@@ -1,0 +1,26 @@
+#!/bin/bash
+if [ "$EUID" -ne 0 ]; then
+  echo "(NVIDIA v470) This script must be run as root."
+  exit
+fi
+
+case $1 in
+  on )
+    echo "(NVIDIA v470) Trying to enable discrete graphics"
+    echo 1 > /sys/thinkpad_gsw/gpu_state && \
+    sleep 2 && \
+    modprobe nvidia && \
+    modprobe nvidia-uvm
+    ;;
+  off )
+    echo "(NVIDIA v470) Trying to disable discrete graphics"
+    modprobe -r nvidia-drm && \
+    modprobe -r nvidia-uvm && \
+    modprobe -r nvidia && \
+    echo 0 > /sys/thinkpad_gsw/gpu_state
+    ;;
+  *)
+    echo "(NVIDIA v470) First parameter must be off or on"
+    exit 1
+    ;;
+esac

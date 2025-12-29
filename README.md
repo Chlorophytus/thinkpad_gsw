@@ -24,23 +24,33 @@ Coreboot is complete.
 
 Use DKMS to install the driver.
 
-Copy `10-dont-add-nouveau.conf` to your Xorg config folder so that Xorg won't
-bind to your discrete graphics, making `tpgsw_ctrl` unable to switch off the
-discrete card.
+Copy `99-dont-autoload-gpus.conf` to your Xorg config folder so that Xorg won't
+bind to your discrete graphics, making the `tpgsw_ctrl` loaders unable to switch 
+off the discrete card.
 
-To access `tpgsw_ctrl` easier, copy it to `/usr/local/sbin/`.
+To access `tpgsw_ctrl_nouveau` or `tpgsw_ctrl_nvidia` easier, copy it to 
+`/usr/local/sbin/`.
 
 Boot parameter `modprobe.blacklist=nouveau` should be added to prevent your
-Nvidia graphics card from being detected at boot.
+Nvidia graphics card from being detected at boot. On v470 Nvidia systems,
+force the driver to not auto-load on boot with `nvidia_drm.modeset=0`.
 
 ## Usage
 
-This utilizes Nouveau's `DRI_PRIME=1` feature. For example:
+This can utilize Nouveau's `DRI_PRIME=1` feature. For example:
 
 ```shell
-$ sudo tpgsw_ctrl on
+$ sudo tpgsw_ctrl_nouveau on
 $ DRI_PRIME=1 glxgears -info
-$ sudo tpgsw_ctrl off
+$ sudo tpgsw_ctrl_nouveau off
 ```
 
-Note the `tpgsw_ctrl` utility needs superuser privileges to run.
+Note the `tpgsw_ctrl` utilities need superuser privileges to run.
+
+On Nvidia v470 systems, do this: 
+
+```shell
+$ sudo tpgsw_ctrl_nvidia on
+$ prime-run glxgears -info
+$ sudo tpgsw_ctrl_nvidia off
+```
