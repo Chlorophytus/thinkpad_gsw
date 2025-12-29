@@ -14,6 +14,7 @@ case $1 in
     ;;
   off )
     echo "(NVIDIA v470) Trying to disable discrete graphics"
+    modprobe -r nvidia-modeset && \
     modprobe -r nvidia-drm && \
     modprobe -r nvidia-uvm && \
     modprobe -r nvidia && \
