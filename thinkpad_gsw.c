@@ -8,7 +8,7 @@
 #include <linux/acpi.h>
 #include <asm/io.h>
 
-#define THINKPAD_GSW_VERSION "0.10.3"
+#define THINKPAD_GSW_VERSION "0.10.4"
 
 enum {
     GSW_DONT_CARE = -1,
@@ -79,10 +79,10 @@ static void thinkpad_gsw_dgpu_raw_poke(unsigned char bit, int set) {
 static int is_card_disabled(void) {
   // Returns 0 if card is powered off
   // Returns 1 if the card is powered on
-//  int vccgfx_alive = !thinkpad_gsw_dgpu_raw_peek(THINKPAD_GSW_EC_LENOVO_PMH7_DGPU_POWER_BIT);
+  int vccgfx_alive = thinkpad_gsw_dgpu_raw_peek(THINKPAD_GSW_EC_LENOVO_PMH7_DGPU_POWER_BIT);
 
   // Since some GPUs may be powered but dead, check if detected by PCI
-//  if (vccgfx_alive != 0) {
+  if (vccgfx_alive != 0) {
     u32 cfg_word;
     // read first config word which contains Vendor and Device ID. If all bits
     // are enabled, the device is assumed to be off
@@ -90,9 +90,9 @@ static int is_card_disabled(void) {
     // if one of the bits is not enabled (the card is enabled), the inverted
     // result will be non-zero and hence logical not will make it 0 ("false")
     return !~cfg_word;
-//  }
+  }
 
-//  return 1;
+  return 1;
 }
 
 /* power bus so we can read PCI configuration space */

@@ -7,13 +7,13 @@ fi
 case $1 in
   on )
     echo "(NOUVEAU) Trying to enable discrete graphics"
-    echo 1 > /sys/thinkpad_gsw/gpu_state
-    sleep 2
+    echo 1 > /sys/thinkpad_gsw/gpu_state && \
+    sleep 2 && \
     modprobe nouveau
     ;;
   off )
     echo "(NOUVEAU) Trying to disable discrete graphics"
-    modprobe -r nouveau
+    modprobe -r nouveau && \
     echo 0 > /sys/thinkpad_gsw/gpu_state
     ;;
   *)
