@@ -1,5 +1,7 @@
 # `thinkpad_gsw`
 
+**ARCHIVED**: I no longer use a ThinkPad W541, so I don't need to update this utility.
+
 Toggles the ThinkPad PMH7's discrete graphics card power.
 
 About half of the code is from `bbswitch`. I decided to rewrite the module with
